@@ -26,7 +26,7 @@
 
 
 
-    <div class="wrapper ">
+    <div class="wrapper">
 
         @include('layouts.inc.sidebar')
 
