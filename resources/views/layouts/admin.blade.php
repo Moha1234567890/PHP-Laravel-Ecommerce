@@ -20,6 +20,7 @@
 
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('admin/css/material-dashboard.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet">
     {{-- <link href="{{ asset('fronted/css/custom.css') }}" rel="stylesheet"> --}}
 </head>
 <body>
