@@ -72,13 +72,14 @@
 
             <div class="col-md-12">
                 @if($category->image)
+                  <img class="img-category" src="{{ asset('assets/uploads/category/' . $category->image) }}" alt="">
+                @endif
+
                 <div>
-                    <label for="formFileLg" class="form-label">Large file input example</label>
+                    <label for="formFileLg" class="form-label">Image</label>
                     <input name="image" class="form-control form-control-lg" id="formFileLg" type="file">
                     
-                     <img class="img-category" src="{{ asset('assets/uploads/category/' . $category->image) }}" alt="">
                   </div>
-                  @endif
             </div>
            
    

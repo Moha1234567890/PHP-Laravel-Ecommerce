@@ -9,8 +9,8 @@
       </a></div>
     <div class="sidebar-wrapper">
       <ul class="nav">
-        <li class="nav-item active  ">
-          <a class="nav-link" href="./dashboard.html">
+        <li class="nav-item   {{ Request::is('dashboard') ? 'active' : '' }}">
+          <a class="nav-link" href="">
             <i class="material-icons">dashboard</i>
             <p>Dashboard</p>
           </a>
@@ -21,17 +21,31 @@
             <p>User Profile</p>
           </a>
         </li>
-        <li class="nav-item ">
+        <li class="nav-item {{ Request::is('categories') ? 'active' : '' }} ">
           <a class="nav-link" href="{{ url('categories') }}">
             <i class="material-icons">content_paste</i>
             <p>Categories</p>
           </a>
         </li>
 
-        <li class="nav-item ">
-          <a class="nav-link" href="{{ route('add') }}">
-            <i class="material-icons">plus</i>
+        <li class="nav-item {{ Request::is('add-category') ? 'active' : '' }} ">
+          <a class="nav-link" href="{{ route('add.category') }}">
+            <i class="material-icons">content_paste</i>
             <p>Add Categories</p>
+          </a>
+        </li>
+
+        <li class="nav-item {{ Request::is('products') ? 'active' : '' }} ">
+          <a class="nav-link" href="{{ route('products') }}">
+            <i class="material-icons">content_paste</i>
+            <p>Products</p>
+          </a>
+        </li>
+
+        <li class="nav-item {{ Request::is('add-product') ? 'active' : '' }} ">
+          <a class="nav-link" href="{{ route('add.product') }}">
+            <i class="material-icons">content_paste</i>
+            <p>Add Products</p>
           </a>
         </li>
         <li class="nav-item ">

@@ -55,7 +55,7 @@ class CategoryController extends Controller
         $category->meta_keywords = $request->input('meta_keywords');
         $category->description = $request->input('description');
         $category->save();
-        return redirect('/categories');
+        return redirect('/categories')->with('status', 'category added');
     }
 
 
@@ -82,34 +82,63 @@ class CategoryController extends Controller
                 File::delete($path);
 
 
-                $file = $request->file('image');
-
-                //get extison
-    
-                $ext = $file->getClientOriginalExtension();
-    
-                $filename = time() . '.' . $ext;
-    
-                //move file
-    
-                $file->move('assets/uploads/category/', $filename);
-    
-                $category->image = $filename;
+              
             }
 
-            $category->name = $request->input('name');
-            $category->slug = $request->input('slug');
-            $category->popular = $request->input('popular') == TRUE ? '1' : '0';
-            $category->status = $request->input('status') == TRUE ? '1' : '0';
-            $category->meta_title = $request->input('meta_title');
-            $category->meta_desc = $request->input('meta_desc');
-            $category->meta_keywords = $request->input('meta_keywords');
-            $category->description = $request->input('description');
-            $category->update();
-            return redirect('/categories');
+
+            $file = $request->file('image');
+
+            //get extison
+
+            $ext = $file->getClientOriginalExtension();
+
+            $filename = time() . '.' . $ext;
+
+            //move file
+
+            $file->move('assets/uploads/category/', $filename);
+
+            $category->image = $filename;
+
+
+
+          
 
         }
-       // dd($request);
+
+        $category->name = $request->input('name');
+        $category->slug = $request->input('slug');
+        $category->popular = $request->input('popular') == TRUE ? '1' : '0';
+        $category->status = $request->input('status') == TRUE ? '1' : '0';
+        $category->meta_title = $request->input('meta_title');
+        $category->meta_desc = $request->input('meta_desc');
+        $category->meta_keywords = $request->input('meta_keywords');
+        $category->description = $request->input('description');
+        $category->update();
+        return redirect('/categories')->with('status', 'category updated');
+
+
+
+
+    }
+
+
+    public function delete($id) {
+        $category = Category::find($id);
+        
+        $path = 'assets/uplodas/category/' . $category->image;
+
+        if($category->image) {
+
+            if(File::exists($path)) {
+                
+                File::delete($path);
+            }
+        }
+
+        $category->delete();
+        return redirect('/categories')->with('status', 'category deleted');
+
 
 
     }

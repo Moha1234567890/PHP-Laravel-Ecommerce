@@ -5,8 +5,8 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header card-header-primary">
-          <h4 class="card-title ">Categories</h4>
-          <p class="card-category">Showing your categories</p>
+          <h4 class="card-title ">Products</h4>
+          <p class="card-category">Showing your products</p>
         </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -31,23 +31,23 @@
               </thead>
               <tbody>
 
-                @foreach ($categories as $category)
+                @foreach ($products as $product)
                 <tr>
                     <td>
-                     {{ $category->id }}
+                     {{ $product->id }}
                     </td>
                     <td>
-                     {{ $category->name }}
+                     {{ $product->name }}
                     </td>
                     <td>
-                     {{ $category->description }}
+                     {{ $product->description }}
                     </td>
                     <td>
-                        <img class="img-category" src="{{ asset('assets/uploads/category/'.$category->image) }}" alt="img" />
+                        <img class="img-category" src="{{ asset('assets/uploads/product/'.$product->image) }}" alt="img" />
                     </td>
                     <td>
-                        <a href="{{ url('category-edit/'.$category->id) }}" class="btn btn-primary">Update</button>
-                        <a href="{{ url('category-delete/'.$category->id) }}" class="btn btn-danger text-white">delete</a>
+                        <a href="{{ url('category-edit/'.$product->id) }}" class="btn btn-primary">Update</button>
+                        <a href="{{ url('category-delete/'.$product->id) }}" class="btn btn-danger text-white">delete</a>
                     </td>
                   </tr>
                 @endforeach
