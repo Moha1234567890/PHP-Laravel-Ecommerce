@@ -19,6 +19,12 @@
                   Name
                 </th>
                 <th>
+                  Category Name
+                </th>
+                <th>
+                  Selling Price
+                </th>
+                <th>
                   Description
                 </th>
                 <th>
@@ -40,14 +46,20 @@
                      {{ $product->name }}
                     </td>
                     <td>
+                      {{ $product->category->name }}
+                    </td>
+                    <td>
+                      {{ $product->selling_price }}
+                    </td>
+                    <td>
                      {{ $product->description }}
                     </td>
                     <td>
                         <img class="img-category" src="{{ asset('assets/uploads/product/'.$product->image) }}" alt="img" />
                     </td>
                     <td>
-                        <a href="{{ url('category-edit/'.$product->id) }}" class="btn btn-primary">Update</button>
-                        <a href="{{ url('category-delete/'.$product->id) }}" class="btn btn-danger text-white">delete</a>
+                        <a href="{{ url('product-edit/'.$product->id) }}" class="btn btn-primary">Update</button>
+                        <a href="{{ url('product-delete/'.$product->id) }}" class="btn btn-danger text-white">delete</a>
                     </td>
                   </tr>
                 @endforeach

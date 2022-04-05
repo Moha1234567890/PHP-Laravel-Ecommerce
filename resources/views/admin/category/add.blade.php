@@ -9,7 +9,7 @@
           {{-- <p class="card-category">Complete your profile</p> --}}
         </div>
         <div class="card-body">
-          <form method="POST" action="{{  route('insert.category') }}" enctype="multipart/form-data">
+          <form method="POST" action="{{ route('insert.category') }}" enctype="multipart/form-data">
             @csrf
             <div class="row">
              
