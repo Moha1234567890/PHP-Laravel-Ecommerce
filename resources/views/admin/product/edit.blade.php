@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-header card-header-primary">
           <h4 class="card-title">Add Product</h4>
-          {{-- <p class="card-category">Complete your profile</p> --}}
+          <p class="card-category">Complete your profile</p>
         </div>
         <div class="card-body">
           <form method="POST" action="{{ route('update.product', $product->id) }}" enctype="multipart/form-data">
@@ -91,7 +91,7 @@
                  
         
                   ?>
-                    <select name="cate_id" class="form-select" aria-label="Default select example">
+                    <select name="cate_id" class="form-select custom-select" aria-label="Default select example">
                         <option selected>Choose category</option>
                         @foreach ($categories as $category)
                         
@@ -104,6 +104,8 @@
                     </select>
                 </div>
             </div>
+
+            <br>
 
             <div class="row">
                   <div class="col-md-6 margin-left">

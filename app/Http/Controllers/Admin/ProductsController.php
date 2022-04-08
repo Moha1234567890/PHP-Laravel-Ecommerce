@@ -157,22 +157,21 @@ class ProductsController extends Controller
 
         $product = Product::find($id);
 
-        if($product->image) {
 
-            $path = 'assets/uplodas/product/' . $product->image;
+        $path =  public_path().'/assets/uploads/product/'.$product->image;
 
-            if(File::exists($path)) {
+        if(File::exists($path)) {
 
 
                 File::delete($path);
 
 
               
-            }
         }
+        
 
         $product->delete();   
         
-        return redirect('products')->with('session', 'product deleted');
+        return redirect('products')->with('status', 'product deleted');
     }
 }

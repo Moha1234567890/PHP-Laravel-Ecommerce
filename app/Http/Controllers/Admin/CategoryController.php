@@ -126,7 +126,7 @@ class CategoryController extends Controller
     public function delete($id) {
         $category = Category::find($id);
         
-        $path = 'assets/uplodas/category/' . $category->image;
+        $path = public_path().'/assets/uploads/category/'.$category->image;
 
         if($category->image) {
 

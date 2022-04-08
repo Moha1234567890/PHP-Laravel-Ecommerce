@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-header card-header-primary">
           <h4 class="card-title">Add Product</h4>
-          {{-- <p class="card-category">Complete your profile</p> --}}
+          <p class="card-category">add your products here</p>
         </div>
         <div class="card-body">
           <form method="POST" action="{{ route('insert.product') }}" enctype="multipart/form-data">
@@ -14,7 +14,7 @@
             <div class="row">
                          {{-- 14 --}}
 
-              <div class="col-md-3">
+              <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Name</label>
                   <input type="text" class="form-control" name="name">
@@ -22,7 +22,7 @@
               </div>
                           {{-- 13 --}}
 
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Slug</label>
                   <input type="text" class="form-control" name="slug">
@@ -87,7 +87,7 @@
             <div class="row">
                 <div class="col-md-12 margin-left">
 
-                    <select name="cate_id" class="form-select" aria-label="Default select example">
+                    <select name="cate_id" class="form-select custom-select" aria-label="Default select example">
                         <option selected>Choose category</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -97,6 +97,9 @@
                     </select>
                 </div>
             </div>
+
+            <br>
+            
 
             <div class="row">
                   <div class="col-md-6 margin-left">

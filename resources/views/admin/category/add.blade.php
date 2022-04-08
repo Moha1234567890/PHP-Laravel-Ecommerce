@@ -6,20 +6,20 @@
       <div class="card">
         <div class="card-header card-header-primary">
           <h4 class="card-title">Add Category</h4>
-          {{-- <p class="card-category">Complete your profile</p> --}}
+          <p class="card-category">add your categories here</p>
         </div>
         <div class="card-body">
           <form method="POST" action="{{ route('insert.category') }}" enctype="multipart/form-data">
             @csrf
             <div class="row">
              
-              <div class="col-md-3">
+              <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Name</label>
                   <input type="text" class="form-control" name="name">
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Slug</label>
                   <input type="text" class="form-control" name="slug">
