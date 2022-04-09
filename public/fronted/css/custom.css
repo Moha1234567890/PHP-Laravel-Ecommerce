@@ -1,4 +1,4 @@
-.directive-carsoul {
+ .directive-carsoul {
     background-color: transparent;
     border: none;
 }
@@ -15,7 +15,7 @@
     background-color: #000
 } */
 
-.card {
+.shopping-cart {
     border: none;
     width: 1000px;
     height: 312px;
@@ -154,4 +154,4 @@ label.radio input:checked+span {
   input[type=number]::-webkit-outer-spin-button {
       -webkit-appearance: none;
       margin: 0;
-  }
+  } 

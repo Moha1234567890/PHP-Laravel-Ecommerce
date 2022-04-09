@@ -47,7 +47,7 @@
                                 @endif
                                     <div class="counter">
                                                     <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
-                                                       <input type="number" id="number" value="0" />
+                                                       <input type="number" name="qty" id="number" value="0" />
                                                     <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
                                     </div>
                                 </div>
