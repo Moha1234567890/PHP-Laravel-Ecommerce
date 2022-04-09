@@ -39,6 +39,8 @@
                 <div class="owl-carousel featured-carousel owl-theme">
                     @foreach ($trendingCategories as $trendingCategories)
                      <div class="item">
+                        <a href="{{ route('category.products', $trendingCategories->slug) }}">
+
                             <div class="card">
                                 <img src="{{ asset('assets/uploads/category/'. $trendingCategories->image) }}" class="card-img-top" alt="...">
                                 <div class="card-body">
@@ -48,6 +50,7 @@
                                   </p>
                                 </div>
                             </div>
+                        </a>
                     </div>
                     @endforeach 
     

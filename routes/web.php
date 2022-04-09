@@ -19,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'Front\FrontendController@index');
 Route::get('category', 'Front\FrontendController@category');
+Route::get('category-with-products/{slug}', 'Front\FrontendController@categoryWithProducts')->name('category.products');
+Route::get('single-product/{cate_slug}/{pro_slug}', 'Front\FrontendController@singleProduct')->name('single.product');
+
+
 
 Auth::routes();
 

@@ -1,16 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-0">
     <div class="container-fluid">
+      <ul class="navbar-nav mr-auto">
+
       <a class="navbar-brand" href="#">E-commerce</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+      <div class="collapse navbar-collapse"  id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item  ml-auto  margin-nav">
+            <a class="nav-link active ml-auto" aria-current="page" href="#">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link " href="{{ url('category') }}">categories</a>
+          <li class="nav-item  ml-auto">
+            <a class="nav-link ml-auto" href="{{ url('category') }}">categories</a>
           </li>
                        @guest
                             @if (Route::has('login'))
@@ -51,7 +53,7 @@
                   @endguest
 
           
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown ml-auto">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
             </a>
@@ -62,14 +64,15 @@
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link disabled">Disabled</a>
           </li>
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        </form> --}}
       </div>
+      </ul>
     </div>
   </nav>

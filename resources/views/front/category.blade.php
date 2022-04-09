@@ -11,17 +11,19 @@
         <div class="row">
             <h3>featured categories</h3>
             <div class="owl-carousel featured-carousel owl-theme">
-                @foreach ($featuredCategories as $featuredCategories)
+                @foreach ($featuredCategories as $featuredCategory)
                  <div class="item">
+                     <a href="{{ route('category.products', $featuredCategory->slug) }}">
                         <div class="card">
-                            <img src="{{ asset('assets/uploads/category/'. $featuredCategories->image) }}" class="card-img-top" alt="...">
+                            <img src="{{ asset('assets/uploads/category/'. $featuredCategory->image) }}" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $featuredCategories->name }}</h5>
+                                <h5 class="card-title">{{ $featuredCategory->name }}</h5>
                               <p>
-                                  {{ $featuredCategories->description }}
+                                  {{ $featuredCategory->description }}
                               </p>
                             </div>
                         </div>
+                     </a>
                 </div>
                 @endforeach 
 
