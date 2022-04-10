@@ -9,7 +9,7 @@
 <div class="py-5">
     <div class="container">
         <div class="row">
-            <h3>featured categories</h3>
+            <h3>Categories</h3>
             <div class="owl-carousel featured-carousel owl-theme">
                 @foreach ($featuredCategories as $featuredCategory)
                  <div class="item">
@@ -25,7 +25,7 @@
                         </div>
                      </a>
                 </div>
-                @endforeach 
+                @endforeach
 
             </div>
         </div>

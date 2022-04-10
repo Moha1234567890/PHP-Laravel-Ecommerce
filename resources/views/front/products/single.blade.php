@@ -7,7 +7,7 @@
 <div class="container mt-5 mb-5">
     <div class="row d-flex justify-content-center">
         <div class="col-md-10">
-            <div class="card">
+            <div class="card product_data">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="images p-3">
@@ -45,16 +45,18 @@
                                     <label style="font-size: 13px" class="float-left badge bg-success text-white trending_tag">Out of stock</label>
     
                                 @endif
+
+                                <input type="hidden" class="pro_id" name="pro_id" value="{{ $single_product->id }}">
                                     <div class="counter">
                                                     <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
-                                                       <input type="number" name="qty" id="number" value="0" />
+                                                       <input type="number" class="pro_qty" name="pro_qty" id="number" value="0" />
                                                     <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                
                                     
-                                    <div class="cart mt-4"> <button class="btn btn-success text-uppercase mr-2 px-4">Add to cart</button>  </div>
+                                    <div class="cart mt-4"> <button class="btn btn-success addtocartbtn text-uppercase mr-2 px-4">Add to cart</button>  </div>
                                 </div>
                             <div class="col-md-4">
 
@@ -73,6 +75,32 @@
 
 @section('scripts')
 <script>
+
+        $('.addtocartbtn').click(function(e) {
+
+            e.preventDefault();
+            var product_id = $(this).closest('.product_data').find('.pro_id').val();
+            var product_qty = $(this).closest('.product_data').find('.pro_qty').val();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: '/add-to-cart',
+                method: 'POST',
+                data: {
+                    'pro_id': product_id,
+                    'pro_qty': product_qty,
+                },
+
+                success: function(res) {
+                    swal(res.status);
+                }
+            })
+        });
+
         function change_image(image){
 
             var container = document.getElementById("main-image");

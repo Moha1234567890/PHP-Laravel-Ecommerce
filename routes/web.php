@@ -24,6 +24,14 @@ Route::get('single-product/{cate_slug}/{pro_slug}', 'Front\FrontendController@si
 
 
 
+Route::post('/add-to-cart', 'Front\CartController@addProduct');
+
+Route::group(['middleware', 'auth'], function() {
+
+    Route::get('display-cart-items', 'Front\CartController@displayCartItems')->name('cart-display-items');
+});
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

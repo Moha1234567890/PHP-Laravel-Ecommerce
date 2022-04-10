@@ -9,7 +9,7 @@ use App\Models\Admin\Category;
 
 class FrontendController extends Controller
 {
-    
+
 
     public function index() {
 
@@ -18,12 +18,12 @@ class FrontendController extends Controller
 
         return view('front.index', compact('featuredProducts', 'trendingCategories'));
 
-        
+
     }
 
     public function category() {
 
-        $featuredCategories = Category::where('status', '0')->get();
+        $featuredCategories = Category::where('status', '1')->get();
 
 
         return view('front.category', compact('featuredCategories'));
@@ -53,9 +53,9 @@ class FrontendController extends Controller
                     return view('front.products.single', compact('single_product'));
                 } else {
                     return redirect('/')->with('status', 'link is broken or smth');
-                } 
-                
-       
+                }
+
+
         }  else {
             return redirect('/')->with('status', 'link is broken or smth');
         }
