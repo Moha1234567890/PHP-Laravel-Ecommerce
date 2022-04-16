@@ -25,11 +25,15 @@ Route::get('single-product/{cate_slug}/{pro_slug}', 'Front\FrontendController@si
 
 
 Route::post('/add-to-cart', 'Front\CartController@addProduct');
-Route::post('/delete-from-cart', 'Front\CartController@deleteProduct');
+Route::post('/delete-from-cart', 'Front\CartController@deleteFromCart');
+Route::post('/update-cart-qty', 'Front\CartController@updateQtyCart');
 
 Route::group(['middleware', 'auth'], function() {
 
     Route::get('display-cart-items', 'Front\CartController@displayCartItems')->name('cart-display-items');
+
+    Route::get('checkout', 'Front\CheckoutController@index')->name('checkout');
+
 });
 
 

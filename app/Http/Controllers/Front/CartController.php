@@ -64,7 +64,7 @@ class CartController extends Controller
     }
 
 
-    public function deleteProduct(Request $request) {
+    public function deleteFromCart(Request $request) {
         if(Auth::check()) {
 
             $prod_id = $request->input('prod_id');
@@ -83,6 +83,27 @@ class CartController extends Controller
             }
         }
 
+
+    }
+
+
+    public function updateQtyCart(Request $request) {
+
+        $prod_id = $request->input('prod_id');
+        $prod_qty = $request->input('prod_qty');
+        if(Auth::check()) {
+
+            //$prod_id = $request->input('prod_id');
+
+            if(Cart::where('pro_id', $prod_id)->where('user_id', Auth::id())->exists()) {
+                $cartItem = Cart::where('pro_id', $prod_id)->where('user_id', Auth::id())->first();
+                $cartItem->pro_qty = $prod_qty;
+                $cartItem->update();
+
+                return response()->json(['status' => "updated"]);
+
+            }
+        }
 
     }
 }

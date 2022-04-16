@@ -26,14 +26,14 @@ Cart Items
                         class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
                   </div>
                 </div>
-
+                @php $total = 0; @endphp
 
                 @foreach ($cartItems as $cartItem)
 
                 <div class="card mb-3 form_data">
                   <div class="card-body">
                     <div class="d-flex justify-content-between">
-                      <div class="d-flex flex-row align-items-center">
+                      <div class="d-flex flex-row ">
                         <div>
                           <img
                             src="{{ asset('assets/uploads/product/'. $cartItem->products->image) }}"
@@ -48,9 +48,15 @@ Cart Items
                         <div style="width: 50px;">
                             <div class="counter" style="margin-left: -128px;
                             margin-top: -36px;">
-                                <div class="value-button decrease_it" id="decrease" onclick="" value="Decrease Value">-</div>
+                            @if($cartItem->products->qty > $cartItem->pro_qty)
+                                <div class="value-button change_qty decrease_it" id="decrease" onclick="" value="Decrease Value">-</div>
                                    <input type="number" class="pro_qty" name="pro_qty" id="number" value="{{ $cartItem->pro_qty }}" />
-                                <div class="value-button increase_it" id="increase" onclick="" value="Increase Value">+</div>
+                                <div class="value-button change_qty increase_it" id="increase" onclick="" value="Increase Value">+</div>
+
+                            @else
+                                </h2>out of stock</h2>
+                            @endif
+
                             </div>
                         </div>
                         <div style="width: 80px;">
@@ -67,12 +73,20 @@ Cart Items
                     </div>
                   </div>
                 </div>
+                @php $total += $cartItem->products->selling_price * $cartItem->pro_qty; @endphp
 
                 @endforeach
 
-              </div>
               <div class="col-lg-5">
 
+
+
+              </div>
+              <div class="card card-footer">
+                 Total price: $ {{ $total }}
+                 <div class="pull-right">
+                    <a href="{{ route('checkout') }}" class="btn btn-success"> Processed to checkout</a>
+                 </div>
 
 
               </div>
@@ -146,6 +160,35 @@ Cart Items
             success: function(res) {
                 window.location.reload();
                 swal('', res.status, 'success');
+            }
+
+        });
+    });
+
+    $('.change_qty').click(function() {
+        var prod_id = $(this).closest('.form_data').find('.prod_id').val();
+        var prod_qty = $(this).closest('.form_data').find('.pro_qty').val();
+
+
+
+        $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+        });
+
+        data = {
+            'prod_id': prod_id,
+            'prod_qty': prod_qty,
+        };
+
+        $.ajax({
+            method: 'POST',
+            url: '/update-cart-qty',
+            data: data,
+
+            success: function(res) {
+               window.location.reload();
             }
 
         });

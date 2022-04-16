@@ -25,7 +25,7 @@
                                     <label style="font-size: 16px" class="float-right badge bg-danger text-white trending_tag">trending</label>
                                 @endif
                                 <h2 class="text-uppercase">{{ $single_product->name }}</h2>
-                              
+
                                 <div class="price d-flex flex-row align-items-center"> <span class="act-price">{{ $single_product->original_price }}</span>
                                     <div class="ml-2"> <small class="dis-price">{{ $single_product->selling_price }}</small> <span>40% OFF</span> </div>
                                 </div>
@@ -35,15 +35,15 @@
                                 <h6 class="text-uppercase">Size</h6> <label class="radio"> <input type="radio" name="size" value="S" checked> <span>S</span> </label> <label class="radio"> <input type="radio" name="size" value="M"> <span>M</span> </label> <label class="radio"> <input type="radio" name="size" value="L"> <span>L</span> </label> <label class="radio"> <input type="radio" name="size" value="XL"> <span>XL</span> </label> <label class="radio"> <input type="radio" name="size" value="XXL"> <span>XXL</span> </label>
                             </div> --}}
 
-      
+
                             <div class="row">
                                 <div class="col-md-4">
                                     @if($single_product->qty > 0)
                                     <label style="font-size: 13px" class="float-left badge bg-success text-white trending_tag">In stock</label>
-    
+
                                 @else
-                                    <label style="font-size: 13px" class="float-left badge bg-success text-white trending_tag">Out of stock</label>
-    
+                                    <label style="font-size: 13px" class="float-left badge bg-danger text-white trending_tag">Out of stock</label>
+
                                 @endif
 
                                 <input type="hidden" class="pro_id" name="pro_id" value="{{ $single_product->id }}">
@@ -54,13 +54,15 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                               
-                                    
+                                    @if($single_product->qty > 0)
+
                                     <div class="cart mt-4"> <button class="btn btn-success addtocartbtn text-uppercase mr-2 px-4">Add to cart</button>  </div>
+
+                                    @endif
                                 </div>
                             <div class="col-md-4">
 
-                                <div class="cart mt-4"> <button class="btn btn-primary text-uppercase mr-2 px-4">Add to wishlist</button> 
+                                <div class="cart mt-4"> <button class="btn btn-primary text-uppercase mr-2 px-4">Add to wishlist</button>
                                     {{-- <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i> --}}
                             </div>
                         </div>
@@ -104,20 +106,20 @@
         function change_image(image){
 
             var container = document.getElementById("main-image");
-            
+
             container.src = image.src;
             }
-            
-            
-            
+
+
+
             document.addEventListener("DOMContentLoaded", function(event) {
-            
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
+
             });
 
 
@@ -138,4 +140,4 @@
             }
 
 </script>
-@endsection  
+@endsection

@@ -34,7 +34,7 @@ class FrontendController extends Controller
 
         if(Category::where('slug', $slug)->exists()) {
             $category = Category::where('slug', $slug)->first();
-            $product = Product::where('cate_id', $category->id)->where('status', '0')->get();
+            $product = Product::where('cate_id', $category->id)->where('status', '1')->get();
 
             return view('front.products.index', compact(['category', 'product']));
 
