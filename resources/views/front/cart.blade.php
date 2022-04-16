@@ -1,15 +1,15 @@
 @extends('layouts.front')
 @section('title')
-{{-- {{ $category->name }} --}}
+Cart Items
 @endsection
 @section('content')
 <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col">
-        <div class="card form_data">
+        <div class="card ">
           <div class="card-body  p-4">
 
-            <div class="row">
+            <div class="row ">
 
               <div class="col-md-12">
                 <h5 class="mb-3"><a href="#!" class="text-body"><i
@@ -30,7 +30,7 @@
 
                 @foreach ($cartItems as $cartItem)
 
-                <div class="card mb-3">
+                <div class="card mb-3 form_data">
                   <div class="card-body">
                     <div class="d-flex justify-content-between">
                       <div class="d-flex flex-row align-items-center">
@@ -50,12 +50,18 @@
                             margin-top: -36px;">
                                 <div class="value-button decrease_it" id="decrease" onclick="" value="Decrease Value">-</div>
                                    <input type="number" class="pro_qty" name="pro_qty" id="number" value="{{ $cartItem->pro_qty }}" />
-                                <div class="value-button increase_it" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
+                                <div class="value-button increase_it" id="increase" onclick="" value="Increase Value">+</div>
                             </div>
                         </div>
                         <div style="width: 80px;">
                           <h5 class="mb-0">{{ $cartItem->products->selling_price  }}</h5>
                         </div>
+                        <input class="prod_id" type="hidden" value="{{ $cartItem->products->id }}">
+
+                        <div style="width: 80px; margin-right: 40px">
+                            <button class="btn delete_from_cart btn-danger">delete</button>
+                        </div>
+
                         <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
                       </div>
                     </div>
@@ -65,85 +71,11 @@
                 @endforeach
 
               </div>
-              {{-- <div class="col-lg-5">
+              <div class="col-lg-5">
 
-                <div class="card bg-primary text-white rounded-3">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                      <h5 class="mb-0">Card details</h5>
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
-                        class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
-                    </div>
 
-                    <p class="small mb-2">Card type</p>
-                    <a href="#!" type="submit" class="text-white"><i
-                        class="fab fa-cc-mastercard fa-2x me-2"></i></a>
-                    <a href="#!" type="submit" class="text-white"><i
-                        class="fab fa-cc-visa fa-2x me-2"></i></a>
-                    <a href="#!" type="submit" class="text-white"><i
-                        class="fab fa-cc-amex fa-2x me-2"></i></a>
-                    <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-paypal fa-2x"></i></a>
 
-                    <form class="mt-4">
-                      <div class="form-outline form-white mb-4">
-                        <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
-                          placeholder="Cardholder's Name" />
-                        <label class="form-label" for="typeName">Cardholder's Name</label>
-                      </div>
-
-                      <div class="form-outline form-white mb-4">
-                        <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
-                          placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
-                        <label class="form-label" for="typeText">Card Number</label>
-                      </div>
-
-                      <div class="row mb-4">
-                        <div class="col-md-6">
-                          <div class="form-outline form-white">
-                            <input type="text" id="typeExp" class="form-control form-control-lg"
-                              placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" />
-                            <label class="form-label" for="typeExp">Expiration</label>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-outline form-white">
-                            <input type="password" id="typeText" class="form-control form-control-lg"
-                              placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
-                            <label class="form-label" for="typeText">Cvv</label>
-                          </div>
-                        </div>
-                      </div>
-
-                    </form>
-
-                    <hr class="my-4">
-
-                    <div class="d-flex justify-content-between">
-                      <p class="mb-2">Subtotal</p>
-                      <p class="mb-2">$4798.00</p>
-                    </div>
-
-                    <div class="d-flex justify-content-between">
-                      <p class="mb-2">Shipping</p>
-                      <p class="mb-2">$20.00</p>
-                    </div>
-
-                    <div class="d-flex justify-content-between mb-4">
-                      <p class="mb-2">Total(Incl. taxes)</p>
-                      <p class="mb-2">$4818.00</p>
-                    </div>
-
-                    <button type="button" class="btn btn-info btn-block btn-lg">
-                      <div class="d-flex justify-content-between">
-                        <span>$4818.00</span>
-                        <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
-                      </div>
-                    </button>
-
-                  </div>
-                </div>
-
-              </div> --}}
+              </div>
 
             </div>
 
@@ -161,7 +93,26 @@
 
 
 
-$('.increase_it').click(function(e) {
+    $('.increase_it').click(function(e) {
+        e.preventDefault();
+        var inc_value = $(this).closest('.form_data').find('.pro_qty').val();
+        var value = parseInt(inc_value, 10);
+        value = isNaN(value) ? 0 : value;
+        //alert(value);
+
+        if(value < 10) {
+            value++;
+            $(this).closest('.form_data').find('.pro_qty').val(value);
+        }
+
+
+    });
+
+
+
+
+
+    $('.decrease_it').click(function(e) {
     e.preventDefault();
     var inc_value = $(this).closest('.form_data').find('.pro_qty').val();
     var value = parseInt(inc_value, 10);
@@ -169,34 +120,39 @@ $('.increase_it').click(function(e) {
     //alert(value);
 
     if(value < 10) {
-        value++;
-        $(this).closest('.form_data').find('.pro_qty').val();
+        value--;
+        $(this).closest('.form_data').find('.pro_qty').val(value);
     }
 
 
-});
+    });
 
+    $('.delete_from_cart').click(function() {
+        var prod_id = $(this).closest('.form_data').find('.prod_id').val();
 
-            function increaseValue() {
-                var inc_value = $(this).closest('.form_data').find('.pro_qty').val();
-                var value = parseInt(inc_value, 10);
-                value = isNaN(value) ? 0 : value;
-                // alert(value);
-
-                if(value < 10) {
-                    value++;
-                    $(this).closest('.form_data').find('.pro_qty').val();
+        $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
-                // alret('hi');
+        });
+
+        $.ajax({
+            method: 'POST',
+            url: '/delete-from-cart',
+            data: {
+                'prod_id': prod_id
+            },
+
+            success: function(res) {
+                window.location.reload();
+                swal('', res.status, 'success');
             }
 
-            // function decreaseValue() {
-            // var value = $(this).closest('.form_data').find('.decrease_it').val();
-            // value = isNaN(value) ? 0 : value;
-            // value < 1 ? value = 1 : '';
-            // value--;
-            // document.getElementById('number').value = value;
-            // }
+        });
+    });
+
+
+
 
 </script>
 @endsection

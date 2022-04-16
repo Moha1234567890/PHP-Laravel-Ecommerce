@@ -25,6 +25,7 @@ Route::get('single-product/{cate_slug}/{pro_slug}', 'Front\FrontendController@si
 
 
 Route::post('/add-to-cart', 'Front\CartController@addProduct');
+Route::post('/delete-from-cart', 'Front\CartController@deleteProduct');
 
 Route::group(['middleware', 'auth'], function() {
 
