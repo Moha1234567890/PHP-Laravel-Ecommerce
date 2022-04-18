@@ -4,6 +4,8 @@ namespace App\Models\Fronted;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Admin\Product;
+
 
 class OrderItem extends Model
 {
@@ -19,4 +21,9 @@ class OrderItem extends Model
         'price',
 
     ];
+
+    public function productsToOrder()
+    {
+        return $this->belongsTo(Product::class, 'prod_id', 'id');
+    }
 }

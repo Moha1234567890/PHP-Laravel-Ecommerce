@@ -75,7 +75,10 @@ Checkout
             </div>
             <div class="col-md-4">
                 <div class="card card-blue p-3 text-white mb-3"> <span>Your cart items</span>
+                    @if($cartItems->count() > 0)
+
                     <table class="table">
+
                         <thead>
                           <tr>
                             <th scope="col">Name</th>
@@ -84,7 +87,6 @@ Checkout
                           </tr>
                         </thead>
                         <tbody>
-
                             @foreach ($cartItems as $cartItem)
                                 <tr>
                                     <td>{{ $cartItem->products->name }}</td>
@@ -97,7 +99,9 @@ Checkout
                         </tbody>
                       </table>
                       <button class="btn btn-primary" type="submit">Place order</button>
-
+                      @else
+                        <h4 class="pull-center">no items in cart</h4>
+                      @endif
                 </div>
             </div>
         </div>

@@ -34,6 +34,8 @@ Route::group(['middleware', 'auth'], function() {
 
     Route::get('checkout', 'Front\CheckoutController@index')->name('checkout');
     Route::post('checkout-process', 'Front\CheckoutController@checkoutProcess')->name('checkout.process');
+    Route::get('my-orders', 'Front\UsersController@index')->name('user.myorders');
+    Route::get('show-single-order/{id}', 'Front\UsersController@single')->name('single.order');
 
 });
 

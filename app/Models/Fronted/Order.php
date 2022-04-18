@@ -4,6 +4,8 @@ namespace App\Models\Fronted;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Fronted\orderItem;
+
 
 class Order extends Model
 {
@@ -29,4 +31,8 @@ class Order extends Model
         'message',
         'tracking_no',
     ];
+
+    public function orderItems() {
+        return $this->hasMany(orderItem::class);
+    }
 }

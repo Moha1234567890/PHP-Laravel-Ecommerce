@@ -27,55 +27,56 @@ Cart Items
                   </div>
                 </div>
                 @php $total = 0; @endphp
+                    @if($cartItems->count() > 0)
+                    @foreach ($cartItems as $cartItem)
 
-                @foreach ($cartItems as $cartItem)
-
-                <div class="card mb-3 form_data">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                      <div class="d-flex flex-row ">
-                        <div>
-                          <img
-                            src="{{ asset('assets/uploads/product/'. $cartItem->products->image) }}"
-                            class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
-                        </div>
-                        <div class="ms-3">
-                          <h5>{{ $cartItem->products->name }}</h5>
-                          <p class="small mb-0">256GB, Navy Blue</p>
-                        </div>
-                      </div>
-                      <div class="d-flex flex-row align-items-center">
-                        <div style="width: 50px;">
-                            <div class="counter" style="margin-left: -128px;
-                            margin-top: -36px;">
-                            @if($cartItem->products->qty >= $cartItem->pro_qty)
-                                <div class="value-button change_qty decrease_it" id="decrease" onclick="" value="Decrease Value">-</div>
-                                   <input type="number" class="pro_qty" name="pro_qty" id="number" value="{{ $cartItem->pro_qty }}" />
-                                <div class="value-button change_qty increase_it" id="increase" onclick="" value="Increase Value">+</div>
-
-                            @else
-                                </h2>out of stock</h2>
-                            @endif
-
+                    <div class="card mb-3 form_data">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row ">
+                            <div>
+                            <img
+                                src="{{ asset('assets/uploads/product/'. $cartItem->products->image) }}"
+                                class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                            </div>
+                            <div class="ms-3">
+                            <h5>{{ $cartItem->products->name }}</h5>
+                            <p class="small mb-0">256GB, Navy Blue</p>
                             </div>
                         </div>
-                        <div style="width: 80px;">
-                          <h5 class="mb-0">{{ $cartItem->products->selling_price  }}</h5>
-                        </div>
-                        <input class="prod_id" type="hidden" value="{{ $cartItem->products->id }}">
+                        <div class="d-flex flex-row align-items-center">
+                            <div style="width: 50px;">
+                                <div class="counter" style="margin-left: -128px;
+                                margin-top: -36px;">
+                                @if($cartItem->products->qty >= $cartItem->pro_qty)
+                                    <div class="value-button change_qty decrease_it" id="decrease" onclick="" value="Decrease Value">-</div>
+                                    <input type="number" class="pro_qty" name="pro_qty" id="number" value="{{ $cartItem->pro_qty }}" />
+                                    <div class="value-button change_qty increase_it" id="increase" onclick="" value="Increase Value">+</div>
 
-                        <div style="width: 80px; margin-right: 40px">
-                            <button class="btn delete_from_cart btn-danger">delete</button>
-                        </div>
+                                @else
+                                    </h2>out of stock</h2>
+                                @endif
 
-                        <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
-                      </div>
+                                </div>
+                            </div>
+                            <div style="width: 80px;">
+                            <h5 class="mb-0">{{ $cartItem->products->selling_price  }}</h5>
+                            </div>
+                            <input class="prod_id" type="hidden" value="{{ $cartItem->products->id }}">
+
+                            <div style="width: 80px; margin-right: 40px">
+                                <button class="btn delete_from_cart btn-danger">delete</button>
+                            </div>
+
+                            <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-                @php $total += $cartItem->products->selling_price * $cartItem->pro_qty; @endphp
+                    </div>
+                    @php $total += $cartItem->products->selling_price * $cartItem->pro_qty; @endphp
 
-                @endforeach
+                    @endforeach
+
 
               <div class="col-lg-5">
 
@@ -87,9 +88,14 @@ Cart Items
                  <div class="pull-right">
                     <a href="{{ route('checkout') }}" class="btn btn-success"> Processed to checkout</a>
                  </div>
-
+                 @else
+                    <h3 class="text-center">you have no items in your cart</h3>
+                    <a href="{{ url('category') }}" class="pull-right btn btn-success"> Continue shopping</a>
+                @endif
 
               </div>
+
+
 
             </div>
 

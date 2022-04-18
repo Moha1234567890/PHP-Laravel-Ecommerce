@@ -44,6 +44,10 @@
                               onclick="">
                                {{ __('Profile') }}
                               </a>
+                              <a class="dropdown-item" href="{{ route('user.myorders') }}"
+                              onclick="">
+                               {{ __('My orders') }}
+                              </a>
                               <a class="dropdown-item" href="{{ route('logout') }}"
                                  onclick="event.preventDefault();
                                                document.getElementById('logout-form').submit();">
