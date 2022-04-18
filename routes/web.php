@@ -33,6 +33,7 @@ Route::group(['middleware', 'auth'], function() {
     Route::get('display-cart-items', 'Front\CartController@displayCartItems')->name('cart-display-items');
 
     Route::get('checkout', 'Front\CheckoutController@index')->name('checkout');
+    Route::post('checkout-process', 'Front\CheckoutController@checkoutProcess')->name('checkout.process');
 
 });
 

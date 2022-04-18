@@ -49,7 +49,7 @@
                                 <input type="hidden" class="pro_id" name="pro_id" value="{{ $single_product->id }}">
                                     <div class="counter">
                                                     <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
-                                                       <input type="number" class="pro_qty" name="pro_qty" id="number" value="0" />
+                                                       <input type="number" class="pro_qty" name="pro_qty" id="number" value="1" />
                                                     <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
                                     </div>
                                 </div>

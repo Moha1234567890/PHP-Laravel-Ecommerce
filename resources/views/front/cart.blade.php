@@ -48,7 +48,7 @@ Cart Items
                         <div style="width: 50px;">
                             <div class="counter" style="margin-left: -128px;
                             margin-top: -36px;">
-                            @if($cartItem->products->qty > $cartItem->pro_qty)
+                            @if($cartItem->products->qty >= $cartItem->pro_qty)
                                 <div class="value-button change_qty decrease_it" id="decrease" onclick="" value="Decrease Value">-</div>
                                    <input type="number" class="pro_qty" name="pro_qty" id="number" value="{{ $cartItem->pro_qty }}" />
                                 <div class="value-button change_qty increase_it" id="increase" onclick="" value="Increase Value">+</div>
