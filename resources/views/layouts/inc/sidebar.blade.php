@@ -54,13 +54,13 @@
             <p>Orders</p>
           </a>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="./typography.html">
+        <li class="nav-item {{ Request::is('all-users') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('all.users') }}">
             <i class="material-icons">library_books</i>
-            <p>Typography</p>
+            <p>Users</p>
           </a>
         </li>
-        <li class="nav-item ">
+        {{-- <li class="nav-item ">
           <a class="nav-link" href="./icons.html">
             <i class="material-icons">bubble_chart</i>
             <p>Icons</p>
@@ -77,7 +77,7 @@
             <i class="material-icons">notifications</i>
             <p>Notifications</p>
           </a>
-        </li>
+        </li> --}}
         <!-- <li class="nav-item active-pro ">
               <a class="nav-link" href="./upgrade.html">
                   <i class="material-icons">unarchive</i>

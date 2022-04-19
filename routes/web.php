@@ -68,6 +68,8 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
     Route::get('/single-order/{id}', 'Admin\OrdersController@single')->name('single.order.admin');
     Route::put('/update-single-order/{id}', 'Admin\OrdersController@update')->name('update.single.order');
     Route::get('/get-orders-history', 'Admin\OrdersController@historyOrders')->name('history.orders.admin');
+    Route::get('/all-users', 'Admin\DashboardController@users')->name('all.users');
+    Route::get('/user-details/{id}', 'Admin\DashboardController@userDetails')->name('user.details');
 
 
  });
