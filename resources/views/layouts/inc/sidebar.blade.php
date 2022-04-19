@@ -48,10 +48,10 @@
             <p>Add Products</p>
           </a>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="./tables.html">
+        <li class="nav-item {{ Request::is('get-orders-admin') ? 'active' : '' }} ">
+          <a class="nav-link" href="{{ route('orders.admin') }}">
             <i class="material-icons">content_paste</i>
-            <p>Table List</p>
+            <p>Orders</p>
           </a>
         </li>
         <li class="nav-item ">

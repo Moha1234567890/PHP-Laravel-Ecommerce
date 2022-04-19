@@ -72,8 +72,22 @@ Single Order
 
                                 </tbody>
                             </table>
-                            <h3>Grand Total: ${{ $orders->total_price }}</h3>
+                            <h3 >Grand Total: ${{ $orders->total_price }}</h3>
+                                <form action="{{ route('update.single.order', $orders->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <label>Order Status</label>
+                                    <select name="select_status" class="form-select mb-4 custom-select" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+
+                                        <option {{ $orders->status == '0' ? 'selected' : '' }} value="0">pending</option>
+                                        <option {{ $orders->status == '1' ? 'selected' : '' }} value="1">completed</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-primary">submit</button>
+                                </form>
                         </div>
+
+
                     </div>
 
                 </div>

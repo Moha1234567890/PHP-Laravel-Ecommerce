@@ -20,6 +20,7 @@ class UsersController extends Controller
 
     public function single($id) {
         $orders = Order::where('id', $id)->where('user_id', Auth::id())->first();
+       // return $orders;
 
         return view('front.orders.single', compact('orders'));
     }

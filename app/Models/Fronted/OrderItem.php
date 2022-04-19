@@ -22,7 +22,11 @@ class OrderItem extends Model
 
     ];
 
-    public function productsToOrder()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+
+    public function products()
     {
         return $this->belongsTo(Product::class, 'prod_id', 'id');
     }

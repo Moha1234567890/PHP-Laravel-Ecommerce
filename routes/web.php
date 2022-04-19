@@ -63,4 +63,11 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
     Route::put('/product-update/{id}', 'Admin\ProductsController@update')->name('update.product');
     Route::get('/product-delete/{id}', 'Admin\ProductsController@delete')->name('delete.product');
 
+
+    Route::get('/get-orders-admin', 'Admin\OrdersController@index')->name('orders.admin');
+    Route::get('/single-order/{id}', 'Admin\OrdersController@single')->name('single.order.admin');
+    Route::put('/update-single-order/{id}', 'Admin\OrdersController@update')->name('update.single.order');
+    Route::get('/get-orders-history', 'Admin\OrdersController@historyOrders')->name('history.orders.admin');
+
+
  });

@@ -15,6 +15,7 @@ class Order extends Model
 
 
     protected $fillable = [
+
         'user_id',
         'fname',
         'lname',
@@ -33,6 +34,6 @@ class Order extends Model
     ];
 
     public function orderItems() {
-        return $this->hasMany(orderItem::class);
+        return $this->hasMany(orderItem::class, 'order_id', 'id');
     }
 }
