@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield("title")</title>
-    
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -22,8 +22,11 @@
     <link href="{{ asset('admin/css/material-dashboard.min.css') }}" rel="stylesheet">
     <link href="{{ asset('fronted/css/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('fronted/css/owl.theme.default.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('fronted/css/font-awesome.min.css') }}" rel="stylesheet">
 
     <link href="{{ asset('fronted/css/custom.css') }}" rel="stylesheet">
+
+
 </head>
 <body>
 
@@ -44,7 +47,8 @@
             <script src="{{ asset('fronted/js/bootstrap.bundle.min.js') }}" defer></script>
             <script src="{{ asset('fronted/js/owl.carousel.min.js') }}" ></script>
 
-          
+            <script src="{{ asset('fronted/js/custom.js') }}" ></script>
+
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @if(session('status'))
         <script>
@@ -52,6 +56,7 @@
 
         </script>
     @endif
-    @yield('scripts')
+@yield('scripts')
+
 </body>
 </html>

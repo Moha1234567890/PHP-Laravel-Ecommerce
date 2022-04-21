@@ -28,6 +28,14 @@ Route::post('/add-to-cart', 'Front\CartController@addProduct');
 Route::post('/delete-from-cart', 'Front\CartController@deleteFromCart');
 Route::post('/update-cart-qty', 'Front\CartController@updateQtyCart');
 
+Route::post('add-to-wishlist', 'Front\WishlistController@addToWishlist')->name('add.to.wishlist');
+Route::post('/delete-from-wishlist', 'Front\WishlistController@deleteFromWishlist')->name('add.to.wishlist');
+
+Route::get('/load-cart-counter', 'Front\CartController@cartCounter')->name('cart.counter');
+Route::get('/load-wishlist-counter', 'Front\WishlistController@wishlistCounter')->name('wishlist.counter');
+
+
+
 Route::group(['middleware', 'auth'], function() {
 
     Route::get('display-cart-items', 'Front\CartController@displayCartItems')->name('cart-display-items');
@@ -36,6 +44,11 @@ Route::group(['middleware', 'auth'], function() {
     Route::post('checkout-process', 'Front\CheckoutController@checkoutProcess')->name('checkout.process');
     Route::get('my-orders', 'Front\UsersController@index')->name('user.myorders');
     Route::get('show-single-order/{id}', 'Front\UsersController@single')->name('single.order');
+
+
+    //wishlist
+    Route::get('wishlist', 'Front\WishlistController@getWishlist')->name('wishlist');
+
 
 });
 

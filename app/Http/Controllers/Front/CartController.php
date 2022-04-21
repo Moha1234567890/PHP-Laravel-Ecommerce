@@ -41,7 +41,7 @@ class CartController extends Controller
              } else {
 
 
-                return response()->json(['status' => $prod_check->name. " Aleardy added to cart"]);
+                return response()->json(['status' => " Aleardy added to cart"]);
 
              }
 
@@ -106,4 +106,16 @@ class CartController extends Controller
         }
 
     }
+
+
+    public function cartCounter() {
+
+
+        $cartCounter = Cart::where('user_id', Auth::id())->count();
+
+        return response()->json(['count'=>  $cartCounter]);
+    }
+
+
+
 }

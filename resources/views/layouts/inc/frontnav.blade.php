@@ -13,7 +13,15 @@
           </li>
 
           <li class="nav-item  ml-auto  margin-nav">
-            <a class="nav-link active ml-auto" aria-current="page" href="{{ route('cart-display-items') }}">Cart</a>
+            <a class="nav-link active ml-auto" aria-current="page" href="{{ route('cart-display-items') }}">Cart <span class="fa fa-shopping-cart cart-counter" aria-hidden="true">0</span>
+            </a>
+          </li>
+
+          <li class="nav-item  ml-auto  margin-nav">
+            <a class="nav-link active ml-auto" aria-current="page" href="{{ route('wishlist') }}">Wishlist
+                <span class="fa fa-list-ol wishlist-counter" aria-hidden="true">0</span>
+
+            </a>
           </li>
           <li class="nav-item  ml-auto">
             <a class="nav-link ml-auto" href="{{ url('category') }}">categories</a>
@@ -48,6 +56,8 @@
                               onclick="">
                                {{ __('My orders') }}
                               </a>
+
+
                               <a class="dropdown-item" href="{{ route('logout') }}"
                                  onclick="event.preventDefault();
                                                document.getElementById('logout-form').submit();">
@@ -75,8 +85,8 @@
           {{-- </li> --}}
           {{-- <li class="nav-item">
             <a class="nav-link disabled">Disabled</a>
-          </li>
-        </ul>
+          </li> --}}
+        </ul>{{--
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
